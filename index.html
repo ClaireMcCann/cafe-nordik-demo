@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Café Nordik | Une pause chaleureuse</title>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family: Arial, Helvetica, sans-serif;
+      color:#2f3a35;
+      background:#fffdf9;
+      line-height:1.6;
+    }
+    header{
+      position:sticky;
+      top:0;
+      z-index:100;
+      min-height:86px;
+      padding:14px 7%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      background:#fffdf9;
+      border-bottom:1px solid #e8e0d6;
+    }
+    .brand{
+      text-decoration:none;
+      color:#33453d;
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:700;
+      font-size:24px;
+    }
+    .brand-mark{
+      width:44px;height:44px;border-radius:50%;
+      display:flex;align-items:center;justify-content:center;
+      background:#dce8df;
+      font-size:24px;
+    }
+    nav a{
+      margin-left:26px;
+      text-decoration:none;
+      color:#4b5b53;
+      font-weight:600;
+    }
+    nav a:hover{color:#8a5f3d}
+    .hero{
+      min-height:560px;
+      padding:80px 8%;
+      display:flex;
+      align-items:center;
+      background:
+        radial-gradient(circle at 82% 28%, rgba(187,149,110,.18), transparent 28%),
+        linear-gradient(135deg,#f7f1e8,#eef4ef);
+    }
+    .hero-content{max-width:720px}
+    .tag{
+      display:inline-block;
+      margin-bottom:20px;
+      padding:8px 15px;
+      border-radius:30px;
+      background:#e7efe8;
+      color:#5c735f;
+      font-weight:bold;
+      font-size:14px;
+    }
+    h1{
+      font-size:56px;
+      line-height:1.06;
+      margin-bottom:22px;
+      color:#30473d;
+    }
+    .hero p{
+      font-size:20px;
+      color:#65736c;
+      max-width:650px;
+      margin-bottom:30px;
+    }
+    .button{
+      display:inline-block;
+      padding:14px 24px;
+      border-radius:8px;
+      background:#7b5437;
+      color:#fff;
+      text-decoration:none;
+      font-weight:bold;
+    }
+    .button:hover{background:#67452e}
+    section{scroll-margin-top:95px}
+    .features{
+      padding:55px 8%;
+      background:white;
+    }
+    .feature-grid{
+      max-width:1100px;
+      margin:auto;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:24px;
+    }
+    .feature{
+      text-align:center;
+      padding:28px;
+    }
+    .feature-icon{
+      width:62px;height:62px;
+      margin:0 auto 15px;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:#edf3ee;
+      font-size:28px;
+    }
+    .feature h3{color:#526a5a;margin-bottom:8px}
+    .feature p{color:#6e7b74}
+    .hours{
+      padding:75px 8%;
+      background:#f8f4ed;
+      text-align:center;
+    }
+    .section-title{
+      font-size:38px;
+      color:#30473d;
+      margin-bottom:10px;
+    }
+    .subtitle{
+      color:#78837d;
+      margin-bottom:38px;
+    }
+    .hours-card{
+      max-width:720px;
+      margin:auto;
+      background:white;
+      border-radius:16px;
+      padding:34px;
+      box-shadow:0 8px 28px rgba(0,0,0,.06);
+      text-align:left;
+    }
+    .hours-row{
+      display:flex;
+      justify-content:space-between;
+      padding:11px 0;
+      border-bottom:1px solid #eee7de;
+    }
+    .hours-row:last-child{border-bottom:none}
+    .hours-row strong{color:#42584d}
+    .hours-note{
+      margin-top:20px;
+      color:#7c807d;
+      font-size:14px;
+    }
+    .nora-section{
+      padding:75px 8%;
+      text-align:center;
+      color:white;
+      background:linear-gradient(135deg,#344c42,#5a7567);
+    }
+    .nora-section h2{
+      font-size:38px;
+      margin-bottom:14px;
+    }
+    .nora-section p{
+      max-width:720px;
+      margin:0 auto 25px;
+      color:#edf5ef;
+      font-size:18px;
+    }
+    .nora-button{
+      border:0;
+      padding:16px 28px;
+      border-radius:30px;
+      background:#d2a06f;
+      color:#2f3a35;
+      font-size:17px;
+      font-weight:bold;
+      cursor:pointer;
+    }
+    .contact{
+      padding:70px 8%;
+      text-align:center;
+      background:#fffdf9;
+    }
+    .contact-box{
+      max-width:850px;
+      margin:35px auto 0;
+      padding:34px;
+      border-radius:14px;
+      background:#f1eee8;
+    }
+    .contact-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:25px;
+    }
+    .contact-item{
+      color:#667169;
+    }
+    .contact-item strong{
+      display:block;
+      margin-bottom:6px;
+      color:#526a5a;
+    }
+    footer{
+      padding:30px 8%;
+      text-align:center;
+      background:#2f3f38;
+      color:#e7eee9;
+      font-size:14px;
+    }
+    .nora-float{
+      position:fixed;
+      right:24px;
+      bottom:24px;
+      z-index:999;
+      border:0;
+      border-radius:30px;
+      padding:15px 22px;
+      background:#7b5437;
+      color:#fff;
+      font-size:16px;
+      font-weight:bold;
+      cursor:pointer;
+      box-shadow:0 7px 25px rgba(0,0,0,.22);
+    }
+    @media (max-width:850px){
+      nav{display:none}
+      h1{font-size:40px}
+      .hero{min-height:auto;padding:65px 7%}
+      .feature-grid,.contact-grid{grid-template-columns:1fr}
+      .nora-float{right:14px;bottom:14px}
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a class="brand" href="#">
+    <span class="brand-mark">☕</span>
+    <span>Café Nordik</span>
+  </a>
+  <nav>
+    <a href="#">Accueil</a>
+    <a href="#heures">Heures</a>
+    <a href="#nora">Nora</a>
+    <a href="#contact">Nous trouver</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="tag">Café de quartier • Saguenay</div>
+    <h1>Une pause chaleureuse<br>au cœur du quartier.</h1>
+    <p>
+      Bienvenue au Café Nordik, un endroit accueillant au cœur du centre-ville de Saguenay.
+      Passez nous voir pour profiter d’un moment simple, chaleureux et réconfortant.
+    </p>
+    <a class="button" href="#heures">Voir nos heures</a>
+  </div>
+</section>
+
+<section class="features">
+  <div class="feature-grid">
+    <div class="feature">
+      <div class="feature-icon">☕</div>
+      <h3>Chaleureux</h3>
+      <p>Un espace convivial pour prendre une pause et profiter du moment.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">📍</div>
+      <h3>Au centre-ville</h3>
+      <p>Situé au cœur de Saguenay, avec des espaces de stationnement à proximité.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">💬</div>
+      <h3>Besoin d’aide?</h3>
+      <p>Nora peut répondre rapidement à vos questions sur l’adresse et les heures d’ouverture.</p>
+    </div>
+  </div>
+</section>
+
+<section class="hours" id="heures">
+  <h2 class="section-title">Heures d’ouverture</h2>
+  <p class="subtitle">Planifiez votre prochaine visite au Café Nordik.</p>
+
+  <div class="hours-card">
+    <div class="hours-row"><strong>Lundi</strong><span>7 h à 18 h</span></div>
+    <div class="hours-row"><strong>Mardi</strong><span>7 h à 18 h</span></div>
+    <div class="hours-row"><strong>Mercredi</strong><span>7 h à 18 h</span></div>
+    <div class="hours-row"><strong>Jeudi</strong><span>7 h à 18 h</span></div>
+    <div class="hours-row"><strong>Vendredi</strong><span>7 h à 18 h</span></div>
+    <div class="hours-row"><strong>Samedi</strong><span>8 h à 17 h</span></div>
+    <div class="hours-row"><strong>Dimanche</strong><span>8 h à 16 h</span></div>
+
+    <p class="hours-note">
+      Les heures d’ouverture peuvent être modifiées lors des jours fériés ou d’événements spéciaux.
+    </p>
+  </div>
+</section>
+
+<section class="nora-section" id="nora">
+  <h2>Une question? Demandez à Nora.</h2>
+  <p>
+    Nora, notre assistante virtuelle, peut vous renseigner sur notre adresse
+    et nos heures d’ouverture afin de faciliter votre prochaine visite.
+  </p>
+  <button class="nora-button" onclick="ouvrirNora()">💬 Discuter avec Nora</button>
+</section>
+
+<section class="contact" id="contact">
+  <h2 class="section-title">Nous trouver</h2>
+  <p class="subtitle">Venez nous rendre visite au cœur du centre-ville de Saguenay.</p>
+
+  <div class="contact-box">
+    <div class="contact-grid">
+      <div class="contact-item">
+        <strong>📍 Adresse</strong>
+        Café Nordik<br>
+        123, rue du Fjord<br>
+        Saguenay (Québec) G7H 2A1
+      </div>
+      <div class="contact-item">
+        <strong>🚗 Stationnement</strong>
+        Des espaces de stationnement sont disponibles à proximité.
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Café Nordik • Une pause chaleureuse au cœur du quartier
+</footer>
+
+<button class="nora-float" onclick="ouvrirNora()">💬 Discuter avec Nora</button>
+
+<script>
+  function ouvrirNora() {
+    alert("Bonjour! Je suis Nora 👋\n\nJe serai bientôt connectée à Copilot Studio.");
+  }
+</script>
+
+</body>
+</html>
