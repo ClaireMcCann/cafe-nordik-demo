@@ -356,6 +356,8 @@
 
         .nora-button {
             display: inline-block;
+            border: none;
+            cursor: pointer;
             background: #F4C95D;
             color: #25332D;
             padding: 15px 27px;
@@ -369,30 +371,57 @@
             transform: translateY(-2px);
         }
 
-        /* Fenêtre de clavardage flottante */
-        .nora-chat-panel {
+        /* FENÊTRE NORA - même architecture que le site Télécom Boréal */
+
+        .nora-chat {
+            display: none;
             position: fixed;
-            right: 24px;
-            bottom: 86px;
-            width: min(430px, calc(100vw - 32px));
-            height: min(650px, calc(100vh - 120px));
-            z-index: 3000;
+            right: 25px;
+            bottom: 95px;
+            width: min(470px, calc(100vw - 30px));
+            height: 600px;
             background: #FFFFFF;
             border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 16px 45px rgba(0, 0, 0, 0.28);
-            display: none;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.28);
+            z-index: 3000;
+            border: 1px solid #DCE5EB;
         }
 
-        .nora-chat-panel.open {
-            display: block;
+        .nora-chat.active {
+            display: flex;
+            flex-direction: column;
         }
 
-        .nora-chat-panel iframe {
+        .nora-chat-header {
+            height: 58px;
+            padding: 0 18px;
+            background: #0F5132;
+            color: #FFFFFF;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-shrink: 0;
+        }
+
+        .nora-chat-header strong {
+            font-size: 17px;
+        }
+
+        .nora-close {
+            border: none;
+            background: transparent;
+            color: #FFFFFF;
+            font-size: 26px;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .nora-chat iframe {
             width: 100%;
             height: 100%;
             border: 0;
-            display: block;
+            flex: 1;
         }
 
         /* =========================================================
@@ -557,12 +586,11 @@
                 padding: 10px 20px;
             }
 
-            .nora-chat-panel {
-                right: 12px;
-                bottom: 76px;
-                width: calc(100vw - 24px);
-                height: min(620px, calc(100vh - 100px));
-                border-radius: 12px;
+            .nora-chat {
+                right: 15px;
+                bottom: 85px;
+                width: calc(100% - 30px);
+                height: 70vh;
             }
 
             .nora-float {
@@ -726,9 +754,9 @@
                     pour préparer votre visite.
                 </p>
 
-                <a href="#" class="nora-button" id="open-nora-chat">
+                <button class="nora-button" onclick="ouvrirNora()">
                     💬 Discuter avec Nora
-                </a>
+                </button>
 
             </div>
         </section>
@@ -784,50 +812,50 @@
         </p>
     </footer>
 
-    <!-- Fenêtre Nora : cachée jusqu'au clic -->
-    <div class="nora-chat-panel" id="nora-chat-panel" aria-hidden="true">
+    <!-- BOUTON NORA FLOTTANT -->
+
+    <button class="nora-float" onclick="ouvrirNora()">
+        💬 Discuter avec Nora
+    </button>
+
+
+    <!-- FENÊTRE DE CLAVARDAGE NORA -->
+
+    <div class="nora-chat" id="noraChat">
+
+        <div class="nora-chat-header">
+            <strong>💬 Nora — Café Nordik</strong>
+
+            <button
+                class="nora-close"
+                onclick="fermerNora()"
+                aria-label="Fermer">
+                ×
+            </button>
+        </div>
+
         <iframe
             src="https://copilotstudio.microsoft.com/environments/0dfc6748-ef5d-e214-809d-bb8acde11df2/bots/cr301_NoraCafNordik/webchat?__version__=2"
-            title="Nora - Assistante virtuelle du Café Nordik"
-            frameborder="0">
+            title="Nora - Assistante virtuelle du Café Nordik">
         </iframe>
+
     </div>
 
-    <a href="#" class="nora-float" id="nora-float">
-        💬 Discuter avec Nora
-    </a>
 
     <script>
-        const chatPanel = document.getElementById("nora-chat-panel");
-        const floatButton = document.getElementById("nora-float");
-        const sectionButton = document.getElementById("open-nora-chat");
 
-        function openNora(event) {
-            if (event) event.preventDefault();
-            chatPanel.classList.add("open");
-            chatPanel.setAttribute("aria-hidden", "false");
-            floatButton.textContent = "✕ Fermer Nora";
+        function ouvrirNora() {
+            document
+                .getElementById("noraChat")
+                .classList.add("active");
         }
 
-        function toggleNora(event) {
-            if (event) event.preventDefault();
-
-            const isOpen = chatPanel.classList.contains("open");
-
-            if (isOpen) {
-                chatPanel.classList.remove("open");
-                chatPanel.setAttribute("aria-hidden", "true");
-                floatButton.textContent = "💬 Discuter avec Nora";
-            } else {
-                openNora();
-            }
+        function fermerNora() {
+            document
+                .getElementById("noraChat")
+                .classList.remove("active");
         }
 
-        floatButton.addEventListener("click", toggleNora);
-
-        if (sectionButton) {
-            sectionButton.addEventListener("click", openNora);
-        }
     </script>
 
 </body>
